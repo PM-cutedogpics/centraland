@@ -1,11 +1,11 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppShell, MantineProvider } from '@mantine/core';
-import WebsiteHeader from '@/components/WebsiteHeader';
+import WebsiteNavbar from '@/components/WebsiteNavbar';
+import '../app/globals.css'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
-
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ export default function App(props: AppProps) {
           colorScheme: 'light',
         }}
       >
-        <AppShell header={<WebsiteHeader />}>
+        <AppShell navbar={<WebsiteNavbar />}>
             <Component {...pageProps} />
         </AppShell>
       </MantineProvider>

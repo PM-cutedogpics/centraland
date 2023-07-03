@@ -2,7 +2,7 @@
 import { Avatar, Group, Header, Title, Text } from "@mantine/core";
 
 // TODO: Do header
-const WebsiteHeader = () => {
+const WebsiteNavbar = () => {
     return (  
         <Header height={60} p="xs" >
 
@@ -33,4 +33,4 @@ const WebsiteHeader = () => {
     );
 }
  
-export default WebsiteHeader;
+export default WebsiteNavbar;
