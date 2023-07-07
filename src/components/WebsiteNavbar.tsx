@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 import { Avatar, Group, Header, Title, Text } from "@mantine/core";
+//import { Link } from "react-router-dom";
+import Link from 'next/link';
 
 // TODO: Do header
 const WebsiteNavbar = () => {
@@ -21,11 +23,11 @@ const WebsiteNavbar = () => {
 
 
                 <Group >
-                    <Text weight={700}>All</Text>
-                    <Text weight={700}>Games</Text>
-                    <Text weight={700}>Consoles</Text>
-                    <Text weight={700}>PC</Text>
-                    <Text weight={700}>Peripherals</Text>
+                    <Link href="all"><Text weight={700}>All</Text></Link>
+                    <Link href="games"><Text weight={700}>Games</Text></Link>
+                    <Link href="consoles"><Text weight={700}>Consoles</Text></Link>
+                    <Link href="pc"><Text weight={700}>PC</Text></Link>
+                    <Link href="peripherals"><Text weight={700}>Peripherals</Text></Link>
                     <Avatar></Avatar>
                 </Group>
             </Group>
