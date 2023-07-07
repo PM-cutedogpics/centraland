@@ -46,7 +46,7 @@ const LoginModal = () => {
         <div className="modal-content">
           <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
           <div className="bg-white rounded-lg p-8 relative z-10">
-            <img src='\public\favicon.png' className='company-icon'></img>
+            <img src='favicon.png' className='company-icon'></img>
             <div className="absolute top-3 right-3">
               <button
                 className="bg-transparent text-gray-500 hover:text-gray-700 font-bold text-3xl leading-none outline-none focus:outline-none"
