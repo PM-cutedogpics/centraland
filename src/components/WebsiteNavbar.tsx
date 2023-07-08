@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 import { Avatar, Group, Header, Title, Text } from "@mantine/core";
-import Link from 'next/link';
+import Link from "next/link";
 
 // TODO: Do header
 const WebsiteNavbar = () => {
@@ -88,3 +88,5 @@ const WebsiteNavbar = () => {
     </Header>
   );
 };
+
+export default WebsiteNavbar;
