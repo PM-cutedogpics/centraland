@@ -167,3 +167,26 @@
   .dropdown-menu a:hover {
     background-color: #f5f5f5;
   }
+  
+a.nav-item {
+  display: inline-block;
+  position: relative;
+  color: #000000;
+}
+
+a.nav-item:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #9CD9A5;
+  transform-origin: bottom;
+  transition: transform 0.25s ease-out;
+}
+
+a.nav-item:hover:after {
+  transform: scaleX(1);
+}
