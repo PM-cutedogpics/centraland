@@ -1,3 +1,137 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: Montserrat;
+}
+
+.section-header {
+    font-size: 25px;
+    font-weight: bold;
+}
+  
+  a:link {
+    color: #9CD9A5;
+    font-family: Montserrat;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  .label {
+    width: 80%;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  * {box-sizing: border-box}
+  /* Full-width input fields */
+    .inputSign {
+    width: 80%;
+    padding: 15px;
+    margin-bottom: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 1px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #adadad;
+    background: #fefefe;
+  }
+  
+  /* Set a style for all buttons */
+  .button {
+    background-color: #9CD9A5;
+    color: black;
+    font-family: Montserrat;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  button:hover {
+    opacity:1;
+  }
+  
+  /* Add padding to container elements */
+  .container {
+    padding: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background: rgba(0, 0, 0, 0.5);
+    padding-top: 50px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 40%; /* Could be more or less, depending on screen size */
+  }
+  
+  .x-btn{
+    margin-left: auto; 
+    margin-right: 0;
+  }
+  
+  .company-icon{
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .greeting {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .addtnl-txt {
+    text-align: center;
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    float: inline-end;
+    font-size: 20px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+      width: 100%;
+    }
+  }
