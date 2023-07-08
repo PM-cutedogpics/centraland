@@ -14,6 +14,8 @@ export default function Login() {
             <title>Login</title>
         </Head>
         <section>
+            <h1>Signin Page</h1>
+            <LoginModal /> {/* Render the LoginModal component */}
         </section>
     </> 
     );
