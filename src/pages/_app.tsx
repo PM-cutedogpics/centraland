@@ -9,7 +9,6 @@ export default function App(props: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="favicon.png" />
         <title>Home</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
