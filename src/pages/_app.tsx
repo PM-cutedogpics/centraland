@@ -6,7 +6,17 @@ import "../app/globals.css";
 import Sidebar from "@/components/Sidebar/Sidebar";
 
 export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps, router } = props;
+
+  const showSidebar = () : boolean => {
+    // List of pages where sidebar is disabled
+    const noSidebarPages = ["/"];
+    return noSidebarPages.includes(router.pathname) ? false : true;
+  }
+
+  // Create React Element for Sidebar if Sidebar should exist for current page, passes to appshell
+  const SidebarRE = showSidebar() ? <Sidebar /> : <></>
+
   return (
     <>
       <Head>
@@ -26,7 +36,7 @@ export default function App(props: AppProps) {
           colorScheme: "light",
         }}
       >
-        <AppShell header={<WebsiteNavbar />} navbar={<Sidebar />}>
+        <AppShell header={<WebsiteNavbar />} aside={SidebarRE}>
           <Component {...pageProps} />
         </AppShell>
       </MantineProvider>
