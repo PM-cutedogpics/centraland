@@ -4,9 +4,8 @@ interface ChipProps {
 }
 
 export default function HomeChip (props : ChipProps) {
-    const colorClass = props.isActive ? "app-mint-green" : "chip-default";
     return (
-        <div className={`flex justify-center px-3 py-1 rounded-home-chip bg-${colorClass}`}>
+        <div className={`flex justify-center px-3 py-1 rounded-home-chip ${props.isActive ? "bg-app-mint-green" : "bg-chip-default"}`}>
             <p>
                 {props.label}
             </p>
