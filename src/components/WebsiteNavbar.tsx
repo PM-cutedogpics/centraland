@@ -5,12 +5,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 import LoginModal from "@/components/LoginModal";
 import { useDisclosure } from "@mantine/hooks";
+import SignUpModal from "./SignUpModal";
 
 const WebsiteNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  const [opened, { open, close }] = useDisclosure(false); // Handling ng pagopen and close ng modal
+  const [opened, { open, close }] = useDisclosure(false);
+  const [signUpOpen, handlers] = useDisclosure(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -26,7 +28,17 @@ const WebsiteNavbar = () => {
 
   return (
     <Header height={60} p="xs">
-      <LoginModal onClose={closeLoginModal} opened={opened} close={close} />
+      <SignUpModal
+        opened={signUpOpen}
+        close={handlers.close}
+        loginOpened={open}
+      />
+      <LoginModal
+        onClose={closeLoginModal}
+        opened={opened}
+        close={close}
+        loginOpened={open}
+      />
       <Group
         position="apart"
         align="center"
@@ -77,7 +89,7 @@ const WebsiteNavbar = () => {
                   </button>
                 </li>
                 <li>
-                  <a href="signup">Signup</a>
+                  <Text onClick={handlers.open}>Signup</Text>
                 </li>
               </ul>
             )}

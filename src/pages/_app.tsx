@@ -4,18 +4,12 @@ import { AppShell, MantineProvider } from "@mantine/core";
 import WebsiteNavbar from "@/components/WebsiteNavbar";
 import "../app/globals.css";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import router, { useRouter } from "next/router";
 
 export default function App(props: AppProps) {
   const { Component, pageProps, router } = props;
-
-  const showSidebar = () : boolean => {
-    // List of pages where sidebar is disabled
-    const noSidebarPages = ["/"];
-    return noSidebarPages.includes(router.pathname) ? false : true;
-  }
-
-  // Create React Element for Sidebar if Sidebar should exist for current page, passes to appshell
-  const SidebarRE = showSidebar() ? <Sidebar /> : <></>
+  const router = useRouter();
+  const showSidebar = router.pathname !== "/";
 
   return (
     <>
@@ -36,7 +30,10 @@ export default function App(props: AppProps) {
           colorScheme: "light",
         }}
       >
-        <AppShell header={<WebsiteNavbar />} aside={SidebarRE}>
+        <AppShell
+          header={<WebsiteNavbar />}
+          navbar={showSidebar ? <Sidebar /> : <></>}
+        >
           <Component {...pageProps} />
         </AppShell>
       </MantineProvider>
