@@ -4,9 +4,13 @@ import { AppShell, MantineProvider } from "@mantine/core";
 import WebsiteNavbar from "@/components/WebsiteNavbar";
 import "../app/globals.css";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import router, { useRouter } from "next/router";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
+  const router = useRouter();
+  const showSidebar = router.pathname !== "/";
+
   return (
     <>
       <Head>
@@ -26,7 +30,10 @@ export default function App(props: AppProps) {
           colorScheme: "light",
         }}
       >
-        <AppShell header={<WebsiteNavbar />} navbar={<Sidebar />}>
+        <AppShell
+          header={<WebsiteNavbar />}
+          navbar={showSidebar ? <Sidebar /> : <></>}
+        >
           <Component {...pageProps} />
         </AppShell>
       </MantineProvider>
