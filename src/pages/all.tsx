@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { AppShell, MantineProvider, Aside } from "@mantine/core";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import ProductItem from "../components/ProductItem/ProductItem";
+import TempProductItem from "../components/ProductItem/TempProductItem";
 export default function All() {
   return (
     <>
@@ -13,9 +13,9 @@ export default function All() {
         <div className="flex gap-3"></div>
 
         <div className="flex gap-4">
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
+          <TempProductItem />
+          <TempProductItem />
+          <TempProductItem />
           {/* <ProductItem /> */}
         </div>
       </section>
