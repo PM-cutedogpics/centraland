@@ -1,14 +1,64 @@
-import Head from "next/head"
+import Head from 'next/head';
+import React, { useState } from 'react';
+import ProductItem from '../components/ProductItem/ProductItem';
+import { TextInput } from '@mantine/core';
+import SearchIcon from '../components/Icons/SearchIcon';
 
 export default function PCPage() {
-    return ( 
-    <>
-        <Head>
-            <title>PC Parts</title>
-        </Head>
-        <section>
-            PC Parts Page
-        </section>
-    </> 
-    );
+	const [searchVal, setSearchVal] = useState('');
+	return (
+		<>
+			<Head>
+				<title>PC Parts</title>
+			</Head>
+			<section className='py-10'>
+				<form action='/pc'>
+					<div className='flex justify-center'>
+						<TextInput
+							placeholder='Search'
+							radius={10}
+							value={searchVal}
+							className='w-1/2'
+							onChange={(event) => {
+								setSearchVal(event.currentTarget.value);
+							}}
+							icon={<SearchIcon size={14} />}
+						/>
+					</div>
+				</form>
+			</section>
+
+			<section className='container mx-auto absolute left-60 top-[160px]'>
+				<div className='pb-8'>
+					<p className='font-semibold text-2xl'>PC</p>
+					<p className='text-sm'>
+						Find new and used PC parts for sale in the Philippines.
+					</p>
+				</div>
+
+				<div className='flex gap-3'></div>
+
+				<div className='flex gap-4 pb-6'>
+					<ProductItem />
+					<ProductItem />
+					<ProductItem />
+					{/* <ProductItem /> */}
+				</div>
+
+				<div className='flex gap-4 pb-6'>
+					<ProductItem />
+					<ProductItem />
+					<ProductItem />
+					{/* <ProductItem /> */}
+				</div>
+
+				<div className='flex gap-4 pb-6'>
+					<ProductItem />
+					<ProductItem />
+					<ProductItem />
+					{/* <ProductItem /> */}
+				</div>
+			</section>
+		</>
+	);
 }
