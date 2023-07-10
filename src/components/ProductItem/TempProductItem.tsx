@@ -3,23 +3,15 @@ import ProductTag from "../ProductTag/ProductTag"
 import "./ProductItem.scss"
 import Link from 'next/link';
 
-// Component for product items
-export interface ProductProps {
-    product_name: string,
-    product_price: string,
-    product_link: string,
-    product_image?: string,
-    product_condition?: string,
-}
-
-export default function ProductItem(props : ProductProps) {
+// Dummy Data
+export default function TempProductItem() {
     return (
-        <Link href={props.product_link}>
+        <Link href={"https://www.carousell.ph/p/gtx-1050ti-4gb-graphics-card-1185857854/"}>
             <div className="product-item--container flex flex-col items-start pb-4 cursor-pointer relative">
                 <div className="item-overlay absolute bg-gray-400 z-10 transition w-full h-full opacity-0 hover:opacity-30"></div>
                 <div className="aspect-square w-full relative">
                     <Image
-                        src={props.product_image ? props.product_image : "/product-placeholder.jpg"}
+                        src={"/test-product2.jpg"}
                         fill={true}
                         style={{
                             objectFit: "cover"
@@ -32,11 +24,11 @@ export default function ProductItem(props : ProductProps) {
                 <div className="flex flex-col items-start px-4 mt-2 ">
                     <div className="product-name--container">
                         <h5>
-                            {props.product_name}
+                            GTX 1050ti 4GB Graphics Card
                         </h5>
                     </div>
                     
-                    <p className="font-bold">{props.product_price}</p>
+                    <p className="font-bold">PHP 500</p>
 
                     {/* Tags and Source Logo */}
                     <div className="flex justify-between self-end mt-3 w-full">

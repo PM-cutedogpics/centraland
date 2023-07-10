@@ -1,11 +1,21 @@
 .product-item--container {
     background-color: #EDF6F9;
+    color: black;
     border-radius: 13px;
     max-width: 259px;
 }
 
-// .product-image-container {
-//     width: 259px;
-//     height: 228px;
-// }
+.product-name--container {
+    font-size: 15px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; // Number of lines you wish to display
+    height: 15px*3; // Number of lines times font-size
+}
 
+.item-overlay {
+    border-radius: 13px;
+}

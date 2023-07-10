@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
-import ProductItem from '../components/ProductItem/ProductItem';
+import ProductItem from '../components/ProductItem/TempProductItem';
 import { TextInput } from '@mantine/core';
 import SearchIcon from '../components/Icons/SearchIcon';
 

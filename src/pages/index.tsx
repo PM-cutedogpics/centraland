@@ -1,12 +1,16 @@
 import Head from 'next/head';
-import ProductItem from '../components/ProductItem/ProductItem';
+import ProductItem, { ProductProps } from '../components/ProductItem/ProductItem';
+import TempProductItem from "../components/ProductItem/TempProductItem";
 import { TextInput } from '@mantine/core';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchIcon from '../components/Icons/SearchIcon';
 import HomeChip from '../components/Chips/HomeChip';
+import Link from 'next/link';
 
 export default function IndexPage() {
+  const [isLoading, setLoading] = useState(false)
 	const [searchVal, setSearchVal] = useState('');
+  const [hotItems, setHotItems] = useState([]);
 	const [whatsHotChips, setWhatsHotChips] = useState([
 		{ label: 'Graphics Cards', isActive: true },
 		{ label: 'PS5 Games', isActive: false },
@@ -22,7 +26,8 @@ export default function IndexPage() {
 		{ label: 'Keyboards', isActive: false },
 	]);
 
-	const handleSetActive = (label, setname) => {
+
+	const handleSetActive = (label: String, setname: String) => {
 		switch (setname) {
 			case 'whatsHot':
 				let newWhatsHotChips = whatsHotChips.map((chip) => {
@@ -46,7 +51,20 @@ export default function IndexPage() {
 				break;
 		}
 	};
+  
+  // Update hotItems whenever data changes
+  useEffect(() => {
+      setLoading(true);
+      fetch('/api/products/whats_hot')
+          .then((res) => res.json())
+          .then((data) => {
+              setHotItems(data);
+              setLoading(false);
+              console.log(hotItems)
+          })
 
+  }, []);
+  
 	return (
 		<>
 			<Head>
@@ -75,9 +93,9 @@ export default function IndexPage() {
 				<div className='flex flex-col gap-5 px-20'>
 					<div className='flex justify-between items-center'>
 						<h2 className='section-header'>What&apos;s Hot?</h2>
-						<a href='/all' className='text-app-mint-green hover:underline'>
-							See more
-						</a>
+						<Link href="/all">
+                <p className="text-app-mint-green underline">See more</p>
+            </Link>
 					</div>
 
 					{/* Chips */}
@@ -99,10 +117,11 @@ export default function IndexPage() {
 					</div>
 
 					<div className='grid grid-cols-4 flex-wrap gap-4'>
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						{/* <ProductItem /> */}
+						{
+                hotItems.map((item : ProductProps, index) => (
+                    <ProductItem key={index} {...item} />
+                ))
+            }
 					</div>
 				</div>
 			</section>
@@ -112,9 +131,9 @@ export default function IndexPage() {
 				<div className='flex flex-col gap-5 px-20'>
 					<div className='flex justify-between items-center'>
 						<h2 className='section-header'>Newly Listed</h2>
-						<a href='/all' className='text-app-mint-green hover:underline'>
-							See more
-						</a>
+						<Link href="/all">
+                <p className="text-app-mint-green underline">See more</p>
+            </Link>
 					</div>
 
 					{/* Chips */}
@@ -136,9 +155,9 @@ export default function IndexPage() {
 					</div>
 
 					<div className='grid grid-cols-4 flex-wrap gap-4'>
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
+						<TempProductItem />
+						<TempProductItem />
+						<TempProductItem />
 						{/* <ProductItem /> */}
 					</div>
 				</div>
