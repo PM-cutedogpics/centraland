@@ -1,4 +1,3 @@
-
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { AppShell, MantineProvider, Aside, TextInput } from '@mantine/core';
