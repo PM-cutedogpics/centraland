@@ -111,6 +111,7 @@ const SignUpModal = ({ opened, close, loginOpened }: SignUpModalProps) => {
                 background: "#9CD9A5 !important",
                 color: "black",
               }}
+              disabled
             >
               Sign Up
             </Button>

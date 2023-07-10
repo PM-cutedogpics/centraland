@@ -79,6 +79,7 @@ const LoginModal = (props: LoginModalProps) => {
             <button
               className="button" // Replace with the appropriate class name from your globals.css file
               type="submit"
+              disabled
             >
               Log in
             </button>
