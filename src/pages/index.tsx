@@ -27,7 +27,7 @@ export default function IndexPage() {
 	]);
 
 
-	const handleSetActive = (label, setname) => {
+	const handleSetActive = (label: String, setname: String) => {
 		switch (setname) {
 			case 'whatsHot':
 				let newWhatsHotChips = whatsHotChips.map((chip) => {

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
-import ProductItem from '../components/ProductItem/ProductItem';
+import TempProductItem from '../components/ProductItem/TempProductItem';
 import { TextInput } from '@mantine/core';
 import SearchIcon from '../components/Icons/SearchIcon';
 
@@ -39,23 +39,23 @@ export default function Games() {
 				<div className='flex gap-3'></div>
 
 				<div className='flex gap-4 pb-6'>
-					<ProductItem />
-					<ProductItem />
-					<ProductItem />
+					<TempProductItem />
+					<TempProductItem />
+					<TempProductItem />
 					{/* <ProductItem /> */}
 				</div>
 
 				<div className='flex gap-4 pb-6'>
-					<ProductItem />
-					<ProductItem />
-					<ProductItem />
+					<TempProductItem />
+					<TempProductItem />
+					<TempProductItem />
 					{/* <ProductItem /> */}
 				</div>
 
 				<div className='flex gap-4 pb-6'>
-					<ProductItem />
-					<ProductItem />
-					<ProductItem />
+					<TempProductItem />
+					<TempProductItem />
+					<TempProductItem />
 					{/* <ProductItem /> */}
 				</div>
 			</section>
