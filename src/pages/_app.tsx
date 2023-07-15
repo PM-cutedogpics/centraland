@@ -7,7 +7,7 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import router, { useRouter } from "next/router";
 
 export default function App(props: AppProps) {
-  const { Component, pageProps} = props;
+  const { Component, pageProps } = props;
   const router = useRouter();
   const showSidebar = router.pathname !== "/";
 

@@ -6,6 +6,7 @@ import {
   Aside,
   TextInput,
   SimpleGrid,
+  Box,
 } from "@mantine/core";
 import SearchIcon from "../components/Icons/SearchIcon";
 import Sidebar from "@/components/Sidebar/Sidebar";
@@ -15,7 +16,13 @@ import TempProductItem from "../components/ProductItem/TempProductItem";
 export default function All() {
   const [searchVal, setSearchVal] = useState("");
   return (
-    <>
+    <Box
+      w="75%"
+      sx={{
+        left: "220px",
+        position: "absolute",
+      }}
+    >
       <Head>
         <title>CentralandPH</title>
       </Head>
@@ -37,28 +44,31 @@ export default function All() {
 				</form>
 			</section> */}
 
-      <section className="container mx-auto absolute left-60 ">
-        <div className="pb-8">
-          <p className="font-semibold text-2xl">All</p>
-          <p className="text-sm">
-            Find various pre-loved games and PC parts for sale in the
-            Philippines.
-          </p>
-        </div>
-        <SimpleGrid
-          cols={5}
-          spacing="lg"
-          verticalSpacing="xl"
-          sx={{
-            placeItems: "center",
-            alignItems: "start",
-          }}
-        >
-          {Array.apply(null, Array(30)).map((_item, index) => (
-            <TempProductItem key={index} />
-          ))}
-        </SimpleGrid>
-      </section>
-    </>
+      <div className="pb-8">
+        <p className="font-semibold text-2xl">All</p>
+        <p className="text-sm">
+          Find various pre-loved games and PC parts for sale in the Philippines.
+        </p>
+      </div>
+      <SimpleGrid
+        cols={5}
+        spacing="lg"
+        verticalSpacing="xl"
+        sx={{
+          placeItems: "center",
+          alignItems: "start",
+        }}
+        breakpoints={[
+          { maxWidth: "120rem", cols: 4, spacing: "xs" },
+          { maxWidth: "100rem", cols: 3, spacing: "xs" },
+          { maxWidth: "90rem", cols: 2, spacing: "xs" },
+          { maxWidth: "70rem", cols: 1, spacing: "xs" },
+        ]}
+      >
+        {Array.apply(null, Array(30)).map((_item, index) => (
+          <TempProductItem key={index} />
+        ))}
+      </SimpleGrid>
+    </Box>
   );
 }
