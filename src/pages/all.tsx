@@ -20,7 +20,7 @@ export default function All() {
   const [items, setItems] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const router = useRouter();
-  const searchParam = router.query.search;
+  const searchParam = router.query.search  ? router.query.search : "";
 
   useEffect(() => {
     setLoading(true);

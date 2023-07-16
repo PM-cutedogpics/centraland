@@ -14,7 +14,7 @@ export default async function handler(
   const jsonDirectory = path.join(process.cwd(), "/json");
 
   var product_data = await fs.readFile(
-    `${jsonDirectory}/carousell_computer_parts_small.json`,
+    `${jsonDirectory}/carousell/carousell_computer_parts_small.json`,
     "utf-8"
   );
   product_data = JSON.parse(product_data);

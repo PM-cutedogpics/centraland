@@ -6,6 +6,7 @@ import SearchIcon from "../components/Icons/SearchIcon";
 
 export default function PCPage() {
   const [searchVal, setSearchVal] = useState("");
+  
   return (
     <Box
       w="75%"
