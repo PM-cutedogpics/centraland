@@ -55,7 +55,7 @@ export default function All() {
         spacing="lg"
         verticalSpacing="xl"
         sx={{
-          placeItems: "center",
+          placeItems: "start",
           alignItems: "start",
         }}
         breakpoints={[

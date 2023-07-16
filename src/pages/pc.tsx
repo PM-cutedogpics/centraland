@@ -46,7 +46,7 @@ export default function PCPage() {
         spacing="lg"
         verticalSpacing="xl"
         sx={{
-          placeItems: "center",
+          placeItems: "start",
           alignItems: "start",
         }}
         breakpoints={[

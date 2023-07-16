@@ -47,7 +47,7 @@ export default function PeripheralsPage() {
         spacing="lg"
         verticalSpacing="xl"
         sx={{
-          placeItems: "center",
+          placeItems: "start",
           alignItems: "start",
         }}
         breakpoints={[
