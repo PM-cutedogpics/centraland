@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppShell,
   MantineProvider,
@@ -10,11 +10,38 @@ import {
 } from "@mantine/core";
 import SearchIcon from "../components/Icons/SearchIcon";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import ProductItem from "../components/ProductItem/ProductItem";
+import ProductItem, {
+  ProductProps,
+} from "../components/ProductItem/ProductItem";
 import TempProductItem from "../components/ProductItem/TempProductItem";
+import { useRouter } from "next/router";
 
 export default function All() {
-  const [searchVal, setSearchVal] = useState("");
+  const [items, setItems] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const router = useRouter();
+  const searchParam = router.query.search;
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/products/all_products")
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const filteredProducts = React.useMemo(() => {
+    const filtered =
+      items.filter((product: ProductProps) =>
+        product.product_name
+          .toLowerCase()
+          .includes((searchParam as string).toLowerCase())
+      ) ?? [];
+    return filtered;
+  }, [items, searchParam]);
+
   return (
     <Box
       w="75%"
@@ -26,23 +53,6 @@ export default function All() {
       <Head>
         <title>CentralandPH</title>
       </Head>
-
-      {/* <section className='py-10'>
-				<form action='/all'>
-					<div className='flex justify-center'>
-						<TextInput
-							placeholder='Search'
-							radius={10}
-							value={searchVal}
-							className='w-1/2'
-							onChange={(event) => {
-								setSearchVal(event.currentTarget.value);
-							}}
-							icon={<SearchIcon size={14} />}
-						/>
-					</div>
-				</form>
-			</section> */}
 
       <div className="pb-8">
         <p className="font-semibold text-2xl">All</p>
@@ -65,8 +75,8 @@ export default function All() {
           { maxWidth: "70rem", cols: 1, spacing: "xs" },
         ]}
       >
-        {Array.apply(null, Array(30)).map((_item, index) => (
-          <TempProductItem key={index} />
+        {filteredProducts.map((item: ProductProps, index) => (
+          <ProductItem key={index} {...item} />
         ))}
       </SimpleGrid>
     </Box>

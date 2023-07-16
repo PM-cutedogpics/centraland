@@ -11,7 +11,6 @@ import Link from "next/link";
 
 export default function IndexPage() {
   const [isLoading, setLoading] = useState(false);
-  const [searchVal, setSearchVal] = useState("");
   const [hotItems, setHotItems] = useState([]);
   const [whatsHotChips, setWhatsHotChips] = useState([
     { label: "Graphics Cards", isActive: true },

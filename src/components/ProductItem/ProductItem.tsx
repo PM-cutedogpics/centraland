@@ -25,6 +25,7 @@ export default function ProductItem(props: ProductProps) {
                 : "/product-placeholder.jpg"
             }
             fill={true}
+            sizes="200px"
             style={{
               objectFit: "cover",
             }}

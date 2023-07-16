@@ -2,12 +2,13 @@
 import { Avatar, Group, Header, Title, Text, Input, Flex } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoginModal from "@/components/LoginModal";
 import { useDisclosure } from "@mantine/hooks";
 import SignUpModal from "./SignUpModal";
 import { IconSearch } from "@tabler/icons";
 import SearchIcon from "./Icons/SearchIcon";
+import { useRouter } from "next/router";
 
 const WebsiteNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,13 @@ const WebsiteNavbar = () => {
 
   const closeLoginModal = () => {
     setIsLoginModalOpen(false);
+  };
+
+  const router = useRouter();
+
+  const handleSearch = () => {
+    router.query.search = search;
+    router.push(router);
   };
 
   return (
@@ -85,6 +93,11 @@ const WebsiteNavbar = () => {
             style={{}}
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}
+            onKeyUp={(event) => {
+              if (event.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
         </Flex>
 
