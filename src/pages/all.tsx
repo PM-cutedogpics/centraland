@@ -31,7 +31,7 @@ export default function All() {
         setLoading(false);
       });
   }, []);
-
+  console.log(items)
   const filteredProducts = React.useMemo(() => {
     const filtered =
       items.filter((product: ProductProps) =>

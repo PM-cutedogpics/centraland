@@ -10,6 +10,7 @@ export interface ProductProps {
   product_link: string;
   product_image?: string;
   product_condition?: string;
+  source: string;
 }
 
 export default function ProductItem(props: ProductProps) {
@@ -39,7 +40,7 @@ export default function ProductItem(props: ProductProps) {
             <h5>{props.product_name}</h5>
           </div>
 
-          <p className="font-bold">{props.product_price}</p>
+          <p className="font-bold">PHP {props.product_price}</p>
 
           {/* Tags and Source Logo */}
           <div className="flex justify-between self-end mt-3 w-full">
@@ -51,7 +52,7 @@ export default function ProductItem(props: ProductProps) {
 
             <div>
               <Image
-                src={"/brand-logos/carousell.png"}
+                src={`/brand-logos/${props.source.toLowerCase()}.png`}
                 width={30}
                 height={30}
                 alt="Brand Logo"

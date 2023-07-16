@@ -1,12 +1,40 @@
 import Head from "next/head";
-import React, { useState } from "react";
-import ProductItem from "../components/ProductItem/TempProductItem";
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import ProductItem, { ProductProps } from "../components/ProductItem/ProductItem";
 import { Box, SimpleGrid, TextInput } from "@mantine/core";
 import SearchIcon from "../components/Icons/SearchIcon";
 
-export default function PCPage() {
-  const [searchVal, setSearchVal] = useState("");
+export default function PCPage(props : any) {
+  const [items, setItems] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const router = useRouter();
+  const searchParam = router.query.search  ? router.query.search : "";
+
+  // Extract sidebar filters, state found in _app.tsx
+  const { websiteFilter, conditionFilter, minPriceFilter, maxPriceFilter } = props;
   
+  useEffect(() => {
+    setLoading(true);
+    setItems([]);
+    fetch(`/api/products/pc_products?source=${websiteFilter}&condition=${conditionFilter}&minPrice=${minPriceFilter}&maxPrice=${maxPriceFilter}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+        setLoading(false);
+      });
+  }, [websiteFilter, conditionFilter, minPriceFilter, maxPriceFilter]);
+
+  const filteredProducts = React.useMemo(() => {
+    const filtered =
+      items.filter((product: ProductProps) =>
+        product.product_name
+          .toLowerCase()
+          .includes((searchParam as string).toLowerCase())
+      ) ?? [];
+    return filtered;
+  }, [items, searchParam]);
+
   return (
     <Box
       w="75%"
@@ -18,22 +46,6 @@ export default function PCPage() {
       <Head>
         <title>PC Parts</title>
       </Head>
-      {/* <section className='py-10'>
-				<form action='/pc'>
-					<div className='flex justify-center'>
-						<TextInput
-							placeholder='Search'
-							radius={10}
-							value={searchVal}
-							className='w-1/2'
-							onChange={(event) => {
-								setSearchVal(event.currentTarget.value);
-							}}
-							icon={<SearchIcon size={14} />}
-						/>
-					</div>
-				</form>
-			</section> */}
 
       <div className="pb-8">
         <p className="font-semibold text-2xl">PC</p>
@@ -57,8 +69,8 @@ export default function PCPage() {
           { maxWidth: "70rem", cols: 1, spacing: "xs" },
         ]}
       >
-        {Array.apply(null, Array(30)).map((_item, index) => (
-          <ProductItem key={index} />
+        {filteredProducts.map((item: ProductProps, index) => (
+          <ProductItem key={index} {...item}/>
         ))}
       </SimpleGrid>
     </Box>
