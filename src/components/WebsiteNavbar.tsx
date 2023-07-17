@@ -65,18 +65,18 @@ const WebsiteNavbar = () => {
         <Group>
           <Link href="/">
             <Image
-              width={50}
-              height={50}
-              src="/cph-logo.png"
+              width={210}
+              height={100}
+              src="/cph-logo-long.png"
               alt="CentralandPH Logo"
             />
           </Link>
 
-          <Link href="/">
-            <Text weight={700} size={30} color="black">
+          {/* <Link href="/">
+            <Text weight={700} size={24} color="black">
               CentralandPH
             </Text>
-          </Link>
+          </Link> */}
         </Group>
         <Flex
           style={{
@@ -104,35 +104,35 @@ const WebsiteNavbar = () => {
 
         <Group position="apart" spacing="xl">
           <Link className="nav-item" href="all">
-            <Text weight={700} size={20}>
+            <Text weight={700} size={18}>
               All
             </Text>
           </Link>
           <Link className="nav-item" href="games">
-            <Text weight={700} size={20}>
+            <Text weight={700} size={18}>
               Games
             </Text>
           </Link>
           <Link className="nav-item" href="consoles">
-            <Text weight={700} size={20}>
+            <Text weight={700} size={18}>
               Consoles
             </Text>
           </Link>
           <Link className="nav-item" href="pc">
-            <Text weight={700} size={20}>
+            <Text weight={700} size={18}>
               PC
             </Text>
           </Link>
           <Link className="nav-item" href="peripherals">
-            <Text weight={700} size={20}>
+            <Text weight={700} size={18}>
               Peripherals
             </Text>
           </Link>
 
           <div style={{ position: "relative" }}>
             <Image
-              width={50}
-              height={50}
+              width={40}
+              height={40}
               src="/account-icon.png"
               alt="Dropdown"
               className="dropdown-toggle"

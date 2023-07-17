@@ -184,14 +184,14 @@ a.nav-item {
 }
 
 a.nav-item:after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #9cd9a5;
+  background-color: #9CD9A5;
   transform-origin: bottom;
   transition: transform 0.25s ease-out;
 }
@@ -202,14 +202,16 @@ a.nav-item:hover:after {
 
 .rounded-home-chip.active-chip {
   background-color: #9cd9a5;
-  box-shadow: 0px 4px 8px 0px #00000040;
+  box-shadow: 0px 4px 8px 0px #9cd9a5;
 }
 
-.rounded-home-chip.inactive-chip {
+.rounded-home-chip {
+  box-shadow: none;
   background-color: #ebebeb;
 }
 
 .rounded-home-chip:hover {
   box-shadow: 0px 4px 8px 0px #00000040;
-  transition: box-shadow 100ms ease-out;
+  transition: box-shadow 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
 }
