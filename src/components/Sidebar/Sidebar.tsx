@@ -1,106 +1,153 @@
-	// components/layout/Layout.tsx
-	import React, { PropsWithChildren } from 'react';
-	import {
-		Aside,
-		Checkbox,
-		TextInput,
-	} from '@mantine/core';
-	import './sidebar.scss';
+// components/layout/Layout.tsx
+import React, { PropsWithChildren } from "react";
+import {
+  Aside,
+  Checkbox,
+  Stack,
+  TextInput,
+  Text,
+  Space,
+  Group,
+  Button,
+} from "@mantine/core";
+import "./sidebar.scss";
+import { useForm } from "@mantine/form";
+import { useRouter } from "next/router";
 
-	export enum Websites {
-		Facebook,
-		Shopee,
-		Carousell,
-		Lazada,
-		TipidPC,
-		Gilmore
-	}
+export enum Websites {
+  Facebook,
+  Shopee,
+  Carousell,
+  Lazada,
+  TipidPC,
+  Gilmore,
+}
 
-	const Sidebar = (props: any) => {
-		return (
-			<form action=''>
-				<Aside fixed={false} position={{ top: 0, left: 0 }} width={{ base: 200 }}>
-					{/* First section with normal height (depends on section content) */}
-					<Aside.Section className='pt-5 pb-1 ml-5 text-xl font-bold'>
-						Website
-					</Aside.Section>
+const Sidebar = (props: any) => {
+  const form = useForm({
+    initialValues: {
+      facebook: false,
+      shopee: false,
+      datablitz: false,
+      carousell: false,
+      lazada: false,
+      bNew: false,
+      lNew: false,
+      sUsed: false,
+      wUsed: false,
+      min: "",
+      max: "",
+    },
+  });
+  const router = useRouter();
 
-					<div className='ml-5'>
-						<div className='flex pb-6'>
-							<div className='flex-col flex gap-2'>
-								<Checkbox 
-									label='Facebook' 
-									radius='xs' 
-									size='sm' 
-									checked={props.websiteFilter === "Facebook"}
-									onChange={() => props.onWebsiteFilterChange("Facebook")}	
-								/>
+  const submitForm = (values: any) => {
+    console.log(values.facebook);
+    router.query.facebook = values.facebook;
+    router.query.shopee = values.shopee;
+    router.query.datablitz = values.datablitz;
+    router.query.carousell = values.carousell;
+    router.query.lazada = values.lazada;
+    router.query.bNew = values.bNew;
+    router.query.lNew = values.lNew;
+    router.query.sUsed = values.sUsed;
+    router.query.wUsed = values.wUsed;
+    router.query.min = values.min;
+    router.query.max = values.max;
+    router.push(router);
+  };
 
-								<Checkbox 
-									label='Shopee'
-									radius='xs' 
-									size='sm' 
-									checked={props.websiteFilter === "Shopee"}
-									onChange={() => props.onWebsiteFilterChange("Shopee")}
-								/>
+  React.useEffect(() => {
+    form.reset();
+  }, [router.route]);
 
-								<Checkbox 
-									label='Carousell' 
-									radius='xs' 
-									size='sm' 
-									checked={props.websiteFilter === "Carousell"} 
-									onChange={() => props.onWebsiteFilterChange("Carousell")}
-								/>
+  return (
+    <Aside fixed={false} position={{ top: 0, left: 0 }} width={{ base: 200 }}>
+      <form onSubmit={form.onSubmit((values) => submitForm(values))}>
+        <Stack
+          sx={{
+            paddingTop: "16px",
+            paddingLeft: "10px",
+          }}
+          spacing={0}
+        >
+          <p className="font-semibold text-2xl">Website</p>
+          <Checkbox
+            mt="md"
+            label="Facebook"
+            {...form.getInputProps("facebook", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Shopee"
+            {...form.getInputProps("shopee", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Datablitz"
+            {...form.getInputProps("datablitz", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Carousell"
+            {...form.getInputProps("carousell", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Lazada"
+            {...form.getInputProps("lazada", { type: "checkbox" })}
+          />
 
-								<Checkbox 
-									label='Datablitz' 
-									radius='xs' 
-									size='sm' 
-									checked={props.websiteFilter === "Datablitz"} 
-									onChange={() => props.onWebsiteFilterChange("Datablitz")}
-								/>
-							</div>
-						</div>
+          <Space h="md" />
 
-						<Aside.Section className='pb-1 text-xl font-bold'>
-							Condition
-						</Aside.Section>
+          <p className="font-semibold text-2xl">Condition</p>
+          <Checkbox
+            mt="md"
+            label="Brand New"
+            {...form.getInputProps("bNew", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Like New"
+            {...form.getInputProps("lNew", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Slightly Used"
+            {...form.getInputProps("sUsed", { type: "checkbox" })}
+          />
+          <Checkbox
+            mt="md"
+            label="Well Used"
+            {...form.getInputProps("wUsed", { type: "checkbox" })}
+          />
 
-						<div className='flex pb-6'>
-							<div className='flex-col flex gap-1'>
-								<Checkbox label='Brand New' radius='xs' size='sm' />
+          <Space h="md" />
 
-								<Checkbox label='Like New' radius='xs' size='sm' />
+          <p className="font-semibold text-2xl">Price</p>
+          <Group spacing={5}>
+            <TextInput placeholder="Min" {...form.getInputProps("min")} />
+            to
+            <TextInput placeholder="Max" {...form.getInputProps("max")} />
+          </Group>
 
-								<Checkbox label='Slightly Used' radius='xs' size='sm' />
+          <Group position="right" mt="md">
+            <Button
+              type="submit"
+              radius="md"
+              sx={{
+                background: "#9CD9A5 !important",
+                color: "black",
+                width: "100%",
+              }}
+            >
+              Apply
+            </Button>
+          </Group>
+        </Stack>
+      </form>
+    </Aside>
+  );
+};
 
-								<Checkbox label='Well Used' radius='xs' size='sm' />
-							</div>
-						</div>
-						<Aside.Section className='pb-1 text-xl font-bold'>
-							Price
-						</Aside.Section>
-
-						<div className='pb-6 flex items-center gap-1'>
-							<TextInput variant='default' placeholder='Min' />
-							<p className='px-1'>to</p>
-							<TextInput variant='default' placeholder='Max' />
-						</div>
-					</div>
-					{/* {Websites.map(({ website, isChecked }, i) => (
-				<div key={i}>
-						<Checkbox
-						size="xs"
-						//id={`custom-checkbox-${i}`}
-						// onChange={() => handleChange(isChecked, i)}
-					/>
-						<span>{website}</span>
-				</div>
-				))} */}
-					<button className='button !ml-3'>Apply</button>
-				</Aside>
-			</form>
-		);
-	};
-
-	export default Sidebar;
+export default Sidebar;

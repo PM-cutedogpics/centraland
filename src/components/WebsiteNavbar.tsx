@@ -103,27 +103,27 @@ const WebsiteNavbar = () => {
         </Flex>
 
         <Group position="apart" spacing="xl">
-          <Link className="nav-item" href="all">
+          <Link className="nav-item" href="all" replace>
             <Text weight={700} size={18}>
               All
             </Text>
           </Link>
-          <Link className="nav-item" href="games">
+          <Link className="nav-item" href="/games" replace>
             <Text weight={700} size={18}>
               Games
             </Text>
           </Link>
-          <Link className="nav-item" href="consoles">
+          <Link className="nav-item" href="consoles" replace>
             <Text weight={700} size={18}>
               Consoles
             </Text>
           </Link>
-          <Link className="nav-item" href="pc">
+          <Link className="nav-item" href="pc" replace>
             <Text weight={700} size={18}>
               PC
             </Text>
           </Link>
-          <Link className="nav-item" href="peripherals">
+          <Link className="nav-item" href="peripherals" replace>
             <Text weight={700} size={18}>
               Peripherals
             </Text>
