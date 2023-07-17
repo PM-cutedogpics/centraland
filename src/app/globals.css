@@ -212,6 +212,4 @@ a.nav-item:hover:after {
 
 .rounded-home-chip:hover {
   box-shadow: 0px 4px 8px 0px #00000040;
-  transition: box-shadow 150ms ease-in-out;
-  transition: background-color 150ms ease-in-out;
 }
