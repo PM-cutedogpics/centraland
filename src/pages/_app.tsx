@@ -6,6 +6,7 @@ import "../app/globals.css";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import router, { useRouter } from "next/router";
 import { useState } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -74,6 +75,7 @@ export default function App(props: AppProps) {
           />
         </AppShell>
       </MantineProvider>
+      <Analytics />
     </>
   );
 }
