@@ -9,8 +9,8 @@ export default function HomeChip(props: HomeChipProps) {
 	return (
 		<div
 			className={`flex justify-center px-3 py-1 rounded-home-chip ${
-				props.isActive ? 'bg-app-mint-green' : 'bg-chip-default'
-			} cursor-pointer hover:bg-hover-green`}
+				props.isActive ? 'active-chip' : 'inactive-chip'
+			} cursor-pointer hover:active-chip`}
 			onClick={() => props.handleSetActive(props.label, props.setname)}
 		>
 			<p>{props.label}</p>

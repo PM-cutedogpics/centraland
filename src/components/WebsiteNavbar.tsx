@@ -42,7 +42,8 @@ const WebsiteNavbar = () => {
       height={70}
       p="xs"
       sx={{
-        borderColor: "black",
+        //borderColor: "black",
+        boxShadow: '0px 0px 8px 0px #00000040;'
       }}
     >
       <SignUpModal
