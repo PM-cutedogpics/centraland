@@ -19,7 +19,7 @@ export default function ProductItem(props: ProductProps) {
   return (
     <Link href={props.product_link} target="_blank">
       <div className="product-item--container flex flex-col items-start pb-4 cursor-pointer relative">
-        <div className="item-overlay absolute bg-gray-400 z-10 transition w-full h-full opacity-0 hover:opacity-30"></div>
+        <div className="item-overlay absolute bg-white-400 z-10 transition w-full h-full opacity-0"></div>
         <div className="aspect-square w-full relative">
           <Image
             src={
