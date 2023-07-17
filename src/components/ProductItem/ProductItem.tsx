@@ -14,6 +14,8 @@ export interface ProductProps {
 }
 
 export default function ProductItem(props: ProductProps) {
+  // TODO: Temporarily set default value as carousell, remove when hardcode is fixed
+  const brand = props.source ? props.source.toLowerCase() : 'carousell'
   return (
     <Link href={props.product_link} target="_blank">
       <div className="product-item--container flex flex-col items-start pb-4 cursor-pointer relative">
@@ -40,19 +42,19 @@ export default function ProductItem(props: ProductProps) {
             <h5>{props.product_name}</h5>
           </div>
 
-          <p className="font-bold">PHP {props.product_price}</p>
+          <p className="font-bold">PHP {Number(props.product_price).toFixed(2)}</p>
 
           {/* Tags and Source Logo */}
           <div className="flex justify-between self-end mt-3 w-full">
             <div className="flex flex-wrap gap-2">
-              <ProductTag color="green" label="Like New" />
-              <ProductTag color="red" label="Second Hand" />
+              {/* <ProductTag color="green" label="Like New" />
+              <ProductTag color="red" label="Second Hand" /> */}
               {/* <ProductTag color="red" label="Second Hand"/> */}
             </div>
 
             <div>
               <Image
-                src={`/brand-logos/${props.source.toLowerCase()}.png`}
+                src={`/brand-logos/${brand}.png`}
                 width={30}
                 height={30}
                 alt="Brand Logo"

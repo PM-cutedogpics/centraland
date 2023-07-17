@@ -1,6 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 import { NextApiRequest, NextApiResponse } from "next";
+import { PRODUCT_DATA_LENGTH } from "./helpers/constants";
 
 /**
  * Retrieve PC products
@@ -13,6 +14,7 @@ interface RequestQuery {
   condition?: string;
   minPrice?: string;
   maxPrice?: string;
+  page? : number;
 }
 
 export default async function handler(
@@ -25,13 +27,15 @@ export default async function handler(
   const allProducts = JSON.parse(data);
 
   // Obtain query params, if any
-  const {source, condition, minPrice, maxPrice} : RequestQuery = req.query;
+  const {source, condition, minPrice, maxPrice, page} : RequestQuery = req.query;
+  const pageNumber = page ?? 0;
+  // Filter by PC Parts
+  var pcProducts = allProducts.filter((product: any) => 
+    product.product_type === "pc"  
+  );
 
-  // Filter by PC Parts, and other filters in request (if any)
-  var pcProducts = allProducts.filter((product: any) => {
-    if (product.product_type !== "pc")
-      return false;
-
+  // Other filters, in request (if any)
+  pcProducts = pcProducts.filter((product: any) => {
     if (source && source !== "" && source !== product.source) 
       return false;
 
@@ -47,11 +51,11 @@ export default async function handler(
       if (maxPrice > product.price)
         return false;
     }
-
     return true;
-  });
-
-
+  })
+ 
+  // Page
+  pcProducts = pcProducts.slice(pageNumber * PRODUCT_DATA_LENGTH, (PRODUCT_DATA_LENGTH * pageNumber) + PRODUCT_DATA_LENGTH)
 
   res.status(200).json(pcProducts);
 }

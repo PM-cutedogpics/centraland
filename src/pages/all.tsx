@@ -13,7 +13,6 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import ProductItem, {
   ProductProps,
 } from "../components/ProductItem/ProductItem";
-import TempProductItem from "../components/ProductItem/TempProductItem";
 import { useRouter } from "next/router";
 
 export default function All() {
@@ -31,7 +30,7 @@ export default function All() {
         setLoading(false);
       });
   }, []);
-  console.log(items)
+  
   const filteredProducts = React.useMemo(() => {
     const filtered =
       items.filter((product: ProductProps) =>
@@ -39,6 +38,7 @@ export default function All() {
           .toLowerCase()
           .includes((searchParam as string).toLowerCase())
       ) ?? [];
+
     return filtered;
   }, [items, searchParam]);
 
