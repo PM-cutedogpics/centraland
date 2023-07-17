@@ -13,11 +13,6 @@ export default async function handler(
 ) {
   const jsonDirectory = path.join(process.cwd(), "/json");
 
-  var product_data = await fs.readFile(
-    `${jsonDirectory}/carousell/carousell_computer_parts_small.json`,
-    "utf-8"
-  );
-  product_data = JSON.parse(product_data);
-  product_data = product_data.slice(0, 4);
-  res.status(200).json(product_data);
+  const allProducts = await fs.readFile(`${jsonDirectory}/all.json`, 'utf-8');
+  res.status(200).json(JSON.parse(allProducts));
 }
