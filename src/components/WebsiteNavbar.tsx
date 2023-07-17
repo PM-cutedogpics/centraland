@@ -9,6 +9,7 @@ import SignUpModal from "./SignUpModal";
 import { IconSearch } from "@tabler/icons";
 import SearchIcon from "./Icons/SearchIcon";
 import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 const WebsiteNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +34,16 @@ const WebsiteNavbar = () => {
   const router = useRouter();
 
   const handleSearch = () => {
-    router.query.search = search;
-    router.push(router);
+    if (router.pathname === "/") {
+      const queryParams = { search };
+      router.push({
+        pathname: "/all",
+        query: queryParams,
+      });
+    } else {
+      router.query.search = search;
+      router.push(router);
+    }
   };
 
   return (

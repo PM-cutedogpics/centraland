@@ -20,7 +20,6 @@ export default function All() {
   const [isLoading, setLoading] = useState(true);
   const router = useRouter();
   const searchParam = router.query.search ? router.query.search : "";
-
   const {
     facebook,
     shopee,
