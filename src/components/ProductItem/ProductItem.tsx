@@ -27,6 +27,7 @@ export default function ProductItem(props: ProductProps) {
                 ? props.product_image
                 : "/product-placeholder.jpg"
             }
+            unoptimized
             fill={true}
             sizes="200px"
             style={{
@@ -55,6 +56,7 @@ export default function ProductItem(props: ProductProps) {
             <div>
               <Image
                 src={`/brand-logos/${brand}.png`}
+                unoptimized
                 width={30}
                 height={30}
                 alt="Brand Logo"
